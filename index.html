@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PieChart</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script type="text/javascript">
+$(function () {
+    
+    Highcharts.setOptions({
+     colors: ['#B8BE14', '#ADDFFF', '#243746']
+    });
+    var chart;
+
+    $(document).ready(function() {
+
+        chart = new Highcharts.Chart({
+
+            chart: {
+
+                renderTo: 'container',
+
+                plotBackgroundColor: null,
+
+                plotBorderWidth: null,
+
+                plotShadow: false
+
+            },
+
+            title: {
+
+                text: 'Browser market shares at a specific website, 2010'
+
+            },
+
+            tooltip: {
+
+                formatter: function() {
+										var per =this.percentage;
+                    return '<b>'+ this.point.name +'</b>: '+ per.toFixed(2) +'%';
+
+                }
+
+            },
+
+            plotOptions: {
+
+                pie: {
+
+                    allowPointSelect: true,
+
+                    cursor: 'pointer',
+
+                    dataLabels: {
+
+                        enabled: true,
+
+                        color: '#000000',
+
+                        connectorColor: '#000000',
+
+                        formatter: function() {
+
+                            return '<b>'+ this.point.name +'</b>: '+ (this.percentage).toFixed(2) +' %';
+
+                        }
+
+                    }
+
+                }
+
+            },
+
+            series: [{
+
+                type: 'pie',
+
+                name: 'Summary',
+
+                data: [
+
+                    ['Present in office',   45.0],
+
+                    ['WFH taken',       26.8],
+
+                    ['Leaves taken',12.8]
+
+                ]
+
+            }]
+
+        });
+
+    });
+});
+</script>
+</head>
+<body>
+
+
+
+
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+</body>
+</html>
